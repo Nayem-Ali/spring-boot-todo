@@ -1,5 +1,6 @@
 package com.example.todo.requests.todo;
 
+import com.example.todo.model.Category;
 import com.example.todo.model.Todo;
 import jakarta.persistence.Column;
 import lombok.*;
@@ -11,6 +12,7 @@ import lombok.*;
 public class AddTodoRequest {
     private String title;
     private Boolean status;
+    private Long categoryId;
 
     public Todo createTodo(){
         return Todo.builder()
