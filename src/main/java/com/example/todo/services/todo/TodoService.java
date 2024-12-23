@@ -1,10 +1,10 @@
-package com.example.todo.services;
+package com.example.todo.services.todo;
 
 import com.example.todo.exception.TodoNotFoundException;
 import com.example.todo.model.Todo;
-import com.example.todo.repository.TodoRepository;
-import com.example.todo.requests.AddTodoRequest;
-import com.example.todo.requests.UpdateTodoRequest;
+import com.example.todo.repository.todo.TodoRepository;
+import com.example.todo.requests.todo.AddTodoRequest;
+import com.example.todo.requests.todo.UpdateTodoRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

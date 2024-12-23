@@ -1,6 +1,7 @@
 package com.example.todo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,6 +21,11 @@ public class Todo {
     private String title;
     @Column(columnDefinition = "boolean default false")
     private Boolean status;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_todo_category")
+    @JsonManagedReference
+    Category category;
 
     @PrePersist
     protected void onCreate(){

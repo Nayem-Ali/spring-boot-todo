@@ -1,4 +1,4 @@
-package com.example.todo.requests;
+package com.example.todo.requests.todo;
 
 import com.example.todo.model.Todo;
 import jakarta.persistence.Column;

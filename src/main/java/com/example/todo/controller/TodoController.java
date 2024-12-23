@@ -1,14 +1,12 @@
 package com.example.todo.controller;
 
 import com.example.todo.model.Todo;
-import com.example.todo.requests.AddTodoRequest;
-import com.example.todo.requests.UpdateTodoRequest;
+import com.example.todo.requests.todo.AddTodoRequest;
+import com.example.todo.requests.todo.UpdateTodoRequest;
 import com.example.todo.response.ApiResponse;
-import com.example.todo.services.TodoService;
+import com.example.todo.services.todo.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
