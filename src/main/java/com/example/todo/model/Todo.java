@@ -1,6 +1,7 @@
 package com.example.todo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Todo {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_todo_category")
-    @JsonManagedReference
+    @JsonIgnore
     Category category;
 
     @PrePersist

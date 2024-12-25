@@ -1,10 +1,12 @@
 package com.example.todo.services.todo;
 
 import com.example.todo.exception.TodoNotFoundException;
+import com.example.todo.model.Category;
 import com.example.todo.model.Todo;
 import com.example.todo.repository.todo.TodoRepository;
 import com.example.todo.requests.todo.AddTodoRequest;
 import com.example.todo.requests.todo.UpdateTodoRequest;
+import com.example.todo.services.category.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.List;
 public class TodoService implements ITodoService {
 
     final TodoRepository todoRepository;
+    final CategoryService categoryService;
 
     @Override
     public List<Todo> getAllTodos() {
@@ -29,6 +32,11 @@ public class TodoService implements ITodoService {
     @Override
     public Todo createTodo(AddTodoRequest addTodoRequest) {
         Todo newTodo = addTodoRequest.createTodo();
+        if(addTodoRequest.getCategoryId()!=null){
+            Category category = categoryService.getCategoryById(addTodoRequest.getCategoryId());
+            newTodo.setCategory(category);
+        }
+
         return todoRepository.save(newTodo);
     }
 
