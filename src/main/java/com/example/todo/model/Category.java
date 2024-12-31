@@ -1,7 +1,6 @@
 package com.example.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +24,6 @@ public class Category {
 
     @Column(columnDefinition = "TEXT")
     @OneToMany(mappedBy = "category")
-    @JsonIgnore
+    @JsonBackReference
     List<Todo> todos;
 }

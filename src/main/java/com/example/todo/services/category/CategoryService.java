@@ -8,7 +8,6 @@ import com.example.todo.requests.category.UpdateCategoryRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -19,10 +18,7 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public List<Category> getAllCategory() {
-        List<Category> categories =categoryRepository.findAll().stream().toList();
-
-//        System.out.println(Arrays.toString(categories.toArray()));
-        return categories;
+        return categoryRepository.findAll().stream().toList();
     }
 
     @Override

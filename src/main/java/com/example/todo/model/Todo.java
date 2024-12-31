@@ -25,7 +25,7 @@ public class Todo {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_todo_category")
-    @JsonIgnore
+    @JsonManagedReference
     Category category;
 
     @PrePersist

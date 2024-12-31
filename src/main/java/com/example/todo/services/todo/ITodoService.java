@@ -12,5 +12,5 @@ public interface ITodoService {
     Todo createTodo(AddTodoRequest addTodoRequest);
     Todo updateTodo(Long id,UpdateTodoRequest updateTodoRequest);
     void deleteTodo(Long id);
-
+//    Todo getTodoByCategory();
 }
