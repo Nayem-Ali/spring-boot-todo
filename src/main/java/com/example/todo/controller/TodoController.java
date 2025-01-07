@@ -8,6 +8,7 @@ import com.example.todo.services.todo.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class TodoController {
     final TodoService todoService;
 
     @GetMapping("all-todos")
+//    @PreAuthorize(value = "hasRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<ApiResponse> getAllTodos() {
         try {
             List<Todo> allTodos = todoService.getAllTodos();
@@ -37,7 +39,7 @@ public class TodoController {
             return ResponseEntity.ok(new ApiResponse("Todo", todo));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                    new ApiResponse("server-error", null)
+                    new ApiResponse("server-error", e.getMessage())
             );
         }
     }
@@ -74,6 +76,18 @@ public class TodoController {
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                     new ApiResponse("server-error", null)
+            );
+        }
+    }
+
+    @GetMapping("get-todos-by-category/{categoryId}")
+    public ResponseEntity<ApiResponse> getTodosByCategory(@PathVariable Long categoryId){
+        try{
+            List<Todo> todos = todoService.getTodosByCategory(categoryId);
+            return ResponseEntity.ok(new ApiResponse("Todos by Category", todos));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new ApiResponse("server-error", e.getMessage())
             );
         }
     }

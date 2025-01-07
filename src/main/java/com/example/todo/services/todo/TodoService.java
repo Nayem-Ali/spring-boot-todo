@@ -58,4 +58,9 @@ public class TodoService implements ITodoService {
         todoRepository.delete(todo);
     }
 
+    @Override
+    public List<Todo> getTodosByCategory(Long categoryID) {
+        return todoRepository.getAllTodosByCategory(categoryID).stream().toList();
+    }
+
 }

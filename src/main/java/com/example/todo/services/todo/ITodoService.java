@@ -1,5 +1,6 @@
 package com.example.todo.services.todo;
 
+import com.example.todo.model.Category;
 import com.example.todo.model.Todo;
 import com.example.todo.requests.todo.AddTodoRequest;
 import com.example.todo.requests.todo.UpdateTodoRequest;
@@ -12,5 +13,6 @@ public interface ITodoService {
     Todo createTodo(AddTodoRequest addTodoRequest);
     Todo updateTodo(Long id,UpdateTodoRequest updateTodoRequest);
     void deleteTodo(Long id);
+    List<Todo> getTodosByCategory(Long categoryID);
 //    Todo getTodoByCategory();
 }
